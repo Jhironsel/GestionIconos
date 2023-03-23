@@ -1,10 +1,11 @@
 package sur.softsurena.metodos;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import javax.swing.ImageIcon;
+//import java.awt.image.BufferedImage;
+//import java.io.File;
+//import java.io.IOException;
 //import javafx.scene.image.Image;
 //import javafx.scene.image.ImageView;
 //import javafx.scene.image.PixelWriter;
@@ -15,8 +16,7 @@ import java.net.URL;
 //import javafx.scene.layout.BackgroundPosition;
 //import javafx.scene.layout.BackgroundRepeat;
 //import javafx.scene.layout.BackgroundSize;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+//import javax.imageio.ImageIO;
 
 public class Imagenes {
 
