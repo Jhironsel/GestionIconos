@@ -1,51 +1,47 @@
 package sur.softsurena.metodos;
 
+import java.awt.Image;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Objects;
 import javax.swing.ImageIcon;
-//import java.awt.image.BufferedImage;
-//import java.io.File;
-//import java.io.IOException;
-//import javafx.scene.image.Image;
-//import javafx.scene.image.ImageView;
-//import javafx.scene.image.PixelWriter;
-//import javafx.scene.image.WritableImage;
-//import javafx.scene.layout.AnchorPane;
-//import javafx.scene.layout.Background;
-//import javafx.scene.layout.BackgroundImage;
-//import javafx.scene.layout.BackgroundPosition;
-//import javafx.scene.layout.BackgroundRepeat;
-//import javafx.scene.layout.BackgroundSize;
-//import javax.imageio.ImageIO;
+import lombok.Getter;
 
+@Getter
 public class Imagenes {
 
-    private final String ruta;
+    private String ruta = "";
     private URL url;
 
     public Imagenes(String archivoExtension) {
+        Objects.nonNull(archivoExtension);
+        
+        if (archivoExtension.isBlank()) {
+            archivoExtension = "NoImageTransp 96 x 96.png";
+        }
+        
         this.ruta = "/sur/softsurena/imagenes/" + archivoExtension;
     }
 
-    public Imagenes() {
-        this.ruta = "";
-    }
+    private Imagenes() {}
 
-    public ImageIcon getICono() {
+    public ImageIcon getIcono() {
         url = getClass().getResource(ruta);
         return new ImageIcon(url);
     }
-
-    public ImageIcon getIcono(String nombreImagenConExtension) {
-        if (nombreImagenConExtension.isBlank()) {
-            nombreImagenConExtension = "NoImageTransp 96 x 96.png";
-        }
-        url = getClass().getResource("/sur/softsurena/imagenes/" + nombreImagenConExtension);
-        return new ImageIcon(url);
-    }
-
-    public URL getPath() {
-        return url;
+    
+    public ImageIcon getIcono(int ancho, int alto) {
+        url = getClass().getResource(ruta);
+        
+        Image scaledInstance = new ImageIcon(url)
+                .getImage()
+                .getScaledInstance(
+                        ancho, 
+                        alto, 
+                        Image.SCALE_DEFAULT
+                );
+        
+        return new ImageIcon(scaledInstance);
     }
 
 //    /**
